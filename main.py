@@ -27,7 +27,7 @@ for i in range(globals.nt):
     field = direct_method.main(globals.n, globals.pos, globals.mass, globals.G, globals.eps)
     
     # evolving position and velocity
-    pos_vel = leap_frog.main(globals.n, globals.pos, globals.vel, globals.mass, field, globals.dt)
+    pos_vel = leap_frog.main(globals.n, globals.pos, globals.vel, field, globals.dt)
     
     globals.pos, globals.vel = pos_vel[0], pos_vel[1]
     

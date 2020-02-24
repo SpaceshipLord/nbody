@@ -2,7 +2,7 @@ from numba import jit
 import numpy as np
 
 @jit
-def main(n, pos, vel, mass, field, dt):
+def main(n, pos, vel, field, dt):
     
     """
     This function evolves the positions and the velocities of the particles for 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     G = 1.
     eps = 0.
     field = direct_method.main(n, pos, mass, G, eps)
-    res = main(n, pos, vel, mass, field, dt)
+    res = main(n, pos, vel, field, dt)
     print(np.all(pos == res[0]))
     
     # one particle
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     G = 1.
     eps = 0.
     field = direct_method.main(n, pos, mass, G, eps)
-    res = main(n, pos, vel, mass, field, dt)
+    res = main(n, pos, vel, field, dt)
     print(np.all((pos+vel*dt) == res[0]))
     
     # two particles
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     G = 1.
     eps = 0.
     field = direct_method.main(n, pos, mass, G, eps)
-    res = main(n, pos, vel, mass, field, dt)
+    res = main(n, pos, vel, field, dt)
     print(np.all((pos+vel*dt) == res[0]))
     print(np.all((vel+field*dt) == res[1]))
     
@@ -86,5 +86,5 @@ if __name__ == '__main__':
     G = 9.81
     eps = 2.
     field = direct_method.main(n, pos, mass, G, eps)
-    wrapped = wrapper(main, n, pos, vel, mass, field, dt)
+    wrapped = wrapper(main, n, pos, vel, field, dt)
     print(timeit.timeit(wrapped, number = 10)/10) # 1e-5s for 1e+3 particles
