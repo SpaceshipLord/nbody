@@ -25,7 +25,7 @@ def main(n, pos, vel, mass, field, dt):
     # updating velocities
     for i in range(n):
         for k in range(3):
-            res[1,i,k] = vel[i,k]+field[i,k]*mass[i]*dt
+            res[1,i,k] = vel[i,k]+field[i,k]*dt
             
     return(res)
             
@@ -71,7 +71,7 @@ if __name__ == '__main__':
     field = direct_method.main(n, pos, mass, G, eps)
     res = main(n, pos, vel, mass, field, dt)
     print(np.all((pos+vel*dt) == res[0]))
-    print(np.all((vel+np.array([field[i]*mass[i] for i in range(2)])*dt) == res[1]))
+    print(np.all((vel+field*dt) == res[1]))
     
     # performance test
     def wrapper(func, *args, **kwargs):

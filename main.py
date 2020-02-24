@@ -23,7 +23,7 @@ for i in range(globals.nt):
     # writing positions
     np.save('./results/pos_'+str(i)+'.npy', globals.pos)
     
-    # evaluating gravitational force
+    # evaluating gravitational field
     field = direct_method.main(globals.n, globals.pos, globals.mass, globals.G, globals.eps)
     
     # evolving position and velocity
