@@ -101,4 +101,4 @@ if __name__ == '__main__':
     G = 9.81
     eps = 2.
     wrapped = wrapper(main, n, pos, mass, G, eps)
-    print(timeit.timeit(wrapped, number = 10)/10) # 4e-2s for 1e+3 particles
+    print(timeit.timeit(wrapped, number = 1000)/1000) # 3e-2s for 1e+3 particles
